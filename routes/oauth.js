@@ -18,6 +18,19 @@ router.get("/google/callback", passport.authenticate("google", {
     }
 )
 
+// 서버 다시하면 log out 된다.
+// 서버가 다시켜져도 세션이 남아 있으면, 로그인 되이었야야 하는 거 아닌가
+router.get("/verify", (req, res)=>{
+    if(req.user){
+        console.log(req.user);
+    }else{
+        console.log("Not Auth");
+    }
+})
+router.get("/logout", (req,res)=>{
+    req.logout();
+    res.redirect("/");
+})
 
 module.exports = router;
 
