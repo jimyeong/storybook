@@ -1,7 +1,7 @@
 <nav class="grey darken-3 ">
     <div class="container">
         <div class="nav-wrapper">
-            <a href="/stories" class="brand-logo center">Story books</a>
+            <a href="/" class="brand-logo center">Story books</a>
             <a href="#" data-target="main-menu" class="sidenav-trigger show-on-large"><i class="fa fa-bars"></i></a>
             <ul class="right hide-on-small-only">
                 {{#if user}}
@@ -13,6 +13,7 @@
             </ul>
             <ul id="main-menu" class="sidenav">
                 {{#if user}}
+
                 {{else}}
                     <li>
                         <a href="/oauth/google" class="btn red darken-1">
@@ -21,12 +22,12 @@
                         </a>
                     </li>
                 {{/if}}
-                <li><a href="/stories">Public stories</a></li>
+                <li><a href="/stories"><i class="fa fa-book"></i>Public stories</a></li>
                 {{#if user}}
-                <li class="divider"></li>
-                <li><a href="/dashboard"><i class="fa fa-cog"></i>Dashboard</a></li>
-                <li><a href="/stories/my"><i class="fa fa-user"></i>My Stories</a></li>
-                <li><a href="/oauth/logout"><i class="fa fa-sign-out"></i>Log out</a></li>
+                    <li class="divider"></li>
+                    <li><a href="/dashboard"><i class="fa fa-cog"></i>Dashboard</a></li>
+                    <li><a href="/stories/my"><i class="fa fa-user"></i>My Stories</a></li>
+                    <li><a href="/oauth/logout"><i class="fa fa-sign-out"></i>Log out</a></li>
                 {{/if}}
             </ul>
         </div>
