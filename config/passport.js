@@ -5,6 +5,8 @@ const User = mongoose.model("user");
 
 
 module.exports = function (passport) {
+    console.log("#####################@@@@@@@@" + keys);
+
     passport.use(new GoogleStretegy({
         clientID: keys.googleClientID,
         clientSecret: keys.googleClientSecret,
