@@ -10,36 +10,38 @@
                 {{{story.body}}}
             </div>
         </div>
-
         {{#if story.allowComments}}
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-title">Comments</span>
-                    {{#if story.user}}
-                        <form method="post" action="/stories/comment/{{story.id}}">
-                            <div class="input-field">
-                                <textarea name="commentBody" class="meterialize-textarea"></textarea>
-                                <label>Add Comment</label>
-                                <input type="submit" class="btn purple" value="Submit">
-                            </div>
-                        </form>
-                    {{else}}
-                        <p><a href="/oauth/google"></a> Please Login to leave a comment</p>
-                    {{/if}}
+            {{#if user}}
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Comments</span>
+                        {{#if story.user}}
+                            <form method="post" action="/stories/comment/{{story.id}}">
+                                <div class="input-field">
+                                    <textarea name="commentBody" class="meterialize-textarea"></textarea>
+                                    <label>Add Comment</label>
+                                    <input type="submit" class="btn purple" value="Submit">
+                                </div>
+                            </form>
+                        {{else}}
+                            <p><a href="/oauth/google"></a> Please Login to leave a comment</p>
+                        {{/if}}
+                    </div>
                 </div>
-            </div>
+            {{else}}
+                <p class="info__txt">You can write a comment after sign-in</p>
+            {{/if}}
             {{#each story.comments}}
                 <div class="card">
-                <div class="card-content">
-                   <h5>{{commentBody}}</h5>
-
-                    <div class="chip">
-                        <img src="{{commentUser.image}}" alt="author-image">
-                        <a href="/stories/user/{{commentUser.id}}">{{commentUser.firstName}} {{commentUser.lastName}}</a>
+                    <div class="card-content">
+                        <h5>{{commentBody}}</h5>
+                        <div class="chip">
+                            <img src="{{commentUser.image}}" alt="author-image">
+                            <a href="/stories/user/{{commentUser.id}}">{{commentUser.firstName}} {{commentUser.lastName}}</a>
+                        </div>
+                        <br>
+                        <small>Posted: {{formatDate commentDate "MMMM Do YYYY"}}</small>
                     </div>
-                    <br>
-                    <small>Posted: {{formatDate commentDate "MMMM Do YYYY"}}</small>
-                </div>
                 </div>
             {{/each}}
         {{/if}}

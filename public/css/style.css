@@ -27,3 +27,7 @@ footer{
 #delete-form{
     display: inline;
 }
+.info__txt{
+    color: #666;
+    font-size: 16px;
+}

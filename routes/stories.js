@@ -43,7 +43,7 @@ router.get("/edit/:id", ensureAuthenticated,(req, res) => {
 
 
 // logged in user story
-router.get("/my/", ensureAuthenticated, (req, res)=>{
+router.get("/my", ensureAuthenticated, (req, res)=>{
     res.locals.user = req.user;
     Story.find({user: req.user.id})
         .populate("user")
