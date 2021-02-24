@@ -1,4 +1,6 @@
 const moment = require("moment");
+
+
 module.exports = {
     truncate: function (str, len) {
         if (str.length > len && str.length > 0) {
@@ -26,16 +28,16 @@ module.exports = {
     editIcon: function (storyUser, loggedUser, storyId, floating = true) {
         if (storyUser == loggedUser) {
             if (floating) {
-                return (`<a href="/stories/edit/${storyId} class='btn-floating halfway-fab red'>
+                return (`<a href="/stories/edit/${storyId}" class='btn-floating halfway-fab blue'>
                         <i class='fa fa-pencil'></i></a>`);
             } else {
-                return (`<a href="/stories/edit/${storyId}><i class='fa fa-pencil'></i></a>`)
+                return (`<a href="/stories/edit/${storyId}"><i class='fa fa-pencil'></i></a>`)
             }
         } else {
             return '';
         }
-
+    },
+    stringify: function (object) {
+        return JSON.stringify(object);
     }
-
-
 }

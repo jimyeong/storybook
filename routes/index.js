@@ -8,8 +8,8 @@ const Story = mongoose.model("story");
 // index
 router.get("/", ensureGuest,(req, res)=>{
     let state ={}
+
     state.user = req.user;
-    //console.log(`user: ${req.user}`);
     res.render("index/welcome", state);
 });
 
@@ -17,7 +17,7 @@ router.get("/", ensureGuest,(req, res)=>{
 router.get("/dashboard", ensureAuthenticated,(req, res)=>{
     Story.find({user: req.user.id})
         .then(story=>{
-            console.log(req.user);
+
             res.render("index/dashboard", {
                 user: req.user,
                 story: story

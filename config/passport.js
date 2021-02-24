@@ -11,10 +11,9 @@ module.exports = function (passport) {
         callbackURL: "/oauth/google/callback",
         proxy: true // https, error not gonna trrow
     }, (accessToken, refreshToken, profile, done) => {
-        // console.log(accessToken);
-        // console.log(profile);
 
-        const image = profile.photos[0].value.substring(0, profile.photos[0].value.indexOf("?")); // 문자열의 0번 index 부터 ?가 나오기 전까지 자른다.
+
+        const image = profile.photos[0].value; // 문자열의 0번 index 부터 ?가 나오기 전까지 자른다.
         const newUser = {
             googleID: profile.id,
             firstname: profile.name.givenName,
@@ -22,6 +21,7 @@ module.exports = function (passport) {
             email: profile.emails[0].value,
             image: image
         }
+        // console.log(profile);
         // check for existing user
         User.findOne({
             googleID: profile.id
