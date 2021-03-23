@@ -15,7 +15,6 @@ module.exports = {
     stripTags: function (input) {
         // float 만 style 속성에서 날리자
         return input.replace(/<(?:.|\n)*?>/gm, ''); //regex
-
     },
     formatDate: function (date, format) {
         return moment(date).format(format);

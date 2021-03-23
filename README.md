@@ -60,6 +60,3 @@ app.use((req, res, next)=>{
 })
 
 ```
-
-### 6.google oauth token expiration period extendted
-refresh token, access token period
